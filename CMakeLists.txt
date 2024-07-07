@@ -4,7 +4,10 @@ project(1oom)
 
 message(WARNING ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-find_package(SDL2 REQUIRED CONFIG REQUIRED)  # COMPONENTS SDL2)
+find_package(SDL2 REQUIRED CONFIG REQUIRED COMPONENTS SDL2)
+# find_package(SDL2_mixer REQUIRED)
+
+message(WARNING ${SDL2_LIBRARIES})
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -151,5 +154,4 @@ add_executable(${PROJECT_NAME}
   src/ui/classic/uigame.c
 )
 
-# target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${SDL2_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2 SDL2_mixer)
